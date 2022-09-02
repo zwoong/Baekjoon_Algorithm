@@ -15,7 +15,7 @@ def solution(n, words):
     
     if len(arr) >= 1:
         arr.sort()
-        answer1 = [arr[0] % n + 1, int(arr[0] / n) + 1]
+        answer1 = [arr[0] % n + 1, arr[0] // n + 1]
     
     # word가 몇개인지 => for문을 몇번을 돌려야하는지
     for i in range(len(words)):
@@ -33,7 +33,7 @@ def solution(n, words):
 
         # 끝말잇기 실패
         if curr != forward:
-            answer2 = [(i+1) % n + 1, int((i+1) / n) + 1]
+            answer2 = [(i+1) % n + 1, (i+1) // n + 1]
             break
             
     if answer1[1] == 0:
@@ -42,12 +42,7 @@ def solution(n, words):
         answer = answer1
     else:
         # answer1 길이가 0인지 체크
-        if answer1[1] == answer2[1]:
-            if answer1[0] >= answer2[0]:
-                answer = answer2
-            else:
-                answer = answer1
-        elif answer1[1] > answer2[1]:
+        if answer1[1] > answer2[1]:
             answer = answer2
         else:
             answer = answer1
